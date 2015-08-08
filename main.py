@@ -22,7 +22,7 @@ for root, dirnames, filenames in os.walk('website-data'):
     for file_name in filenames:
         # if os.path.isfile(file_name) and "html" in file_name :
         if os.path.isfile(file_name):
-            print file_name
+            file_path = os.path.join(root, file_name)
             file = open(file_name, 'r')
             regex = re.compile('<title>(.*?)</title>', re.IGNORECASE|re.DOTALL)
             title = regex.search(file.read())
@@ -30,7 +30,7 @@ for root, dirnames, filenames in os.walk('website-data'):
                 title = title.group(1)
                 ## Check if I can replace the url with os.path or any other way
                 try:
-                    body = v2.extract("file:///Users/Yash/testing-search/tutorials/"+file_name)
+                    body = v2.extract(file_path)
                     ## Remove /n and all such characters from body
                     if body:
                         ## store link as the id and if error we check and then upsert
