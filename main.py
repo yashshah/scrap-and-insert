@@ -6,6 +6,7 @@ import elasticsearch
 import eatiht.v2 as v2
 
 appbase_app = "1"
+appbase_doc_type = ""
 appbase_app_username = "qHKbcf4M6"
 appbase_app_password = "78a6cf0e-90dd-4e86-8243-33b459b5c7c5"
 
@@ -28,13 +29,12 @@ for root, dirnames, filenames in os.walk('website-data'):
             title = regex.search(file.read())
             if title:
                 title = title.group(1)
-                ## Check if I can replace the url with os.path or any other way
                 try:
                     body = v2.extract(file_path)
                     ## Remove /n and all such characters from body
                     if body:
                         ## store link as the id and if error we check and then upsert
-                        result = es.index(index='1', doc_type='article', body={
+                        result = es.index(index= appbase_app, doc_type=appbase_doc_type, body={
                         'body': body,
                         'title':title,
                         'link': "https://www.digitalocean.com/community/tutorials/"+ file_name
