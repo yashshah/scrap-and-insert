@@ -5,9 +5,13 @@ import os
 import elasticsearch
 import eatiht.v2 as v2
 
+appbase_app = "1"
+appbase_app_username = "qHKbcf4M6"
+appbase_app_password = "78a6cf0e-90dd-4e86-8243-33b459b5c7c5"
+
 ##Run the scriping wget script here or another file which calls wget and then this file
 # es = elasticsearch.Elasticsearch()
-es = elasticsearch.Elasticsearch('https://qHKbcf4M6:78a6cf0e-90dd-4e86-8243-33b459b5c7c5@scalr.api.appbase.io')
+es = elasticsearch.Elasticsearch('https://' + appbase_app_username + ':' appbase_app_password + '@scalr.api.appbase.io')
 # Make sure that I'm calling to the Appbase elastic search using HTTP Authentication
 # Creating the Mapping with the elastic search
 
