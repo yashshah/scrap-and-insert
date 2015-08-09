@@ -33,25 +33,23 @@ print es.indices.put_mapping(index = appbase_app, body = body_mapping, doc_type 
 for root, dirnames, filenames in os.walk('website-data'):
     for file_name in filenames:
         # if os.path.isfile(file_name) and "html" in file_name :
-        if os.path.isfile(file_name):
-            file_path = os.path.join(root, file_name)
-            file = open(file_name, 'r')
-            regex = re.compile('<title>(.*?)</title>', re.IGNORECASE|re.DOTALL)
-            title = regex.search(file.read())
-            if title:
-                title = title.group(1)
-                try:
-                    body = v2.extract(file_path)
-                    ## Remove /n and all such characters from body
-                    if body:
-                        ## store link as the id and if error we check and then upsert
-                        result = es.index(index= appbase_app, doc_type=appbase_doc_type, body={
-                        'body': body,
-                        'title':title,
-                        'link': "https://www.digitalocean.com/community/tutorials/"+ file_name
-                        })
-                    else:
-                        print "Error at " + file_name
-                    except:
-                        print file_name
-                        print "Unable to add it to Elastic Search"
+        file = open(file_path, 'r')
+        regex = re.compile('<title>(.*?)</title>', re.IGNORECASE|re.DOTALL)
+        title = regex.search(file.read())
+        if title:
+            title = title.group(1)
+            body = v2.extract("file://" + os.path.abspath(file_path))
+            try:
+                ## Remove /n and all such characters from body
+                if body:
+                    ## store link as the id and if error we check and then upsert
+                    result = es.index(index= appbase_app, doc_type=appbase_doc_type, body={
+                    'body': body,
+                    'title':title,
+                    'link': file_path
+                    })
+                else:
+                    print "Error at " + file_name
+            except:
+                print file_name
+                print "Unable to add it to Elastic Search"
