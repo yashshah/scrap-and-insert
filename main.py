@@ -32,6 +32,7 @@ print es.indices.put_mapping(index = appbase_app, body = body_mapping, doc_type 
 ## Instead of going through the current directory, go through everything
 for root, dirnames, filenames in os.walk('website-data'):
     for file_name in filenames:
+        file_path = os.path.join(root, file_name)
         # if os.path.isfile(file_name) and "html" in file_name :
         file = open(file_path, 'r')
         regex = re.compile('<title>(.*?)</title>', re.IGNORECASE|re.DOTALL)
