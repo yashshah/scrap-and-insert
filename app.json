@@ -3,5 +3,11 @@
   "description": "A app for scrapping your website and feed to Methi for the search that works",
   "website": "https://github.com/yashshah/scrap-and-insert",
   "repository": "https://github.com/yashshah/scrap-and-insert",
-  "addons": ["redistogo:nano"]
+  "addons": ["redistogo:nano"],
+  "env":  {
+    "BUILDPACK_URL": "git://github.com/johnbeynon/heroku-buildpack-wget.git"
+  },
+  "appbase_app_name": "",
+  "username": "",
+  "password": ""
 }
