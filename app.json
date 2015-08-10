@@ -5,9 +5,10 @@
   "repository": "https://github.com/yashshah/scrap-and-insert",
   "addons": ["redistogo:nano"],
   "env":  {
-    "BUILDPACK_URL": "git://github.com/johnbeynon/heroku-buildpack-wget.git"
-  },
-  "appbase_app_name": "",
-  "username": "",
-  "password": ""
+    "BUILDPACK_URL": "git://github.com/johnbeynon/heroku-buildpack-wget.git",
+    "APPBASE_KEY": {
+      "description": "Your Appbase's key on the Methi's dashboard",
+      "required": true
+    }
+  }
 }
