@@ -1,0 +1,7 @@
+{
+  "name": "Website Scrapper",
+  "description": "A app for scrapping your website and feed to Methi for the search that works",
+  "website": "https://github.com/yashshah/scrap-and-insert",
+  "repository": "https://github.com/yashshah/scrap-and-insert",
+  "addons": ["redistogo:nano"]
+}
