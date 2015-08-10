@@ -6,8 +6,8 @@
   "addons": ["redistogo:nano"],
   "env":  {
     "BUILDPACK_URL": "git://github.com/johnbeynon/heroku-buildpack-wget.git",
-    "APPBASE_KEY": {
-      "description": "Your Appbase's key on the Methi's dashboard",
+    "METHI_INGREDIENTS": {
+      "description": "Access token as shown on Methi's dashboard",
       "required": true
     }
   }
