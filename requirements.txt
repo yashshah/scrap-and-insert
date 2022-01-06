@@ -1,7 +1,7 @@
 amqp==1.4.6
 anyjson==0.3.3
 billiard==3.3.0.20
-celery==3.1.18
+celery==5.2.2
 chardet==2.3.0
 eatiht==0.1.14
 elasticsearch==1.6.0
